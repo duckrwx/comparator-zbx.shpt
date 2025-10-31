@@ -75,6 +75,9 @@ impl SummaryReport {
                 crate::models::common::Status::Defeito => status_str.red(),
                 crate::models::common::Status::Disponivel => status_str.cyan(),
                 crate::models::common::Status::Nomadico => status_str.yellow(),
+                crate::models::common::Status::Triagem => status_str.blue(),
+                crate::models::common::Status::Desconhecido => status_str.white(),
+                crate::models::common::Status::Manutencao => status_str.cyan(),
                 crate::models::common::Status::Litigio => status_str.magenta(),
                 crate::models::common::Status::Baixa => status_str.white(),
             };

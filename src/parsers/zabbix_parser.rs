@@ -6,7 +6,7 @@ use crate::{
         common::{DataSource, EstacaoInfo, Regional, Status, TipoEstacao},
         zabbix::{ZabbixHost, ZabbixResponse},
     },
-    
+    utils::normalizer::Normalizer,
 };
 
 pub struct ZabbixParser;
@@ -21,21 +21,20 @@ impl ZabbixParser {
         let mut estacoes = Vec::new();
         
         for host in hosts {
-            if let Some(status) = Self::extract_status(&host) {
-                let regional = Self::extract_regional(&host);
-                let tipo = Self::extract_tipo(&host);
-                
-                let estacao = EstacaoInfo::new(
-                    host.hostid.clone(),
-                    host.name.clone(),
-                    status,
-                    regional,
-                    tipo,
-                    DataSource::Zabbix,
-                );
-                
-                estacoes.push(estacao);
-            }
+            let status = Self::extract_status(&host).unwrap_or(crate::models::common::Status::Desconhecido);
+            let regional = Self::extract_regional(&host);
+            let tipo = Self::extract_tipo(&host);
+
+            let estacao = EstacaoInfo::new(
+                host.hostid.clone(),
+                host.name.clone(),
+                status,
+                regional,
+                tipo,
+                DataSource::Zabbix,
+            );
+
+            estacoes.push(estacao);
         }
         
         Ok(estacoes)
@@ -43,12 +42,27 @@ impl ZabbixParser {
     
     fn extract_status(host: &ZabbixHost) -> Option<Status> {
         for group in &host.groups {
+            // Primeiro, tentar por groupid (configurado)
             match group.groupid.as_str() {
                 STATUS_ATIVO => return Some(Status::Ativo),
                 STATUS_DEFEITO => return Some(Status::Defeito),
                 STATUS_DISPONIVEL => return Some(Status::Disponivel),
                 STATUS_NOMADICO => return Some(Status::Nomadico),
                 STATUS_LITIGIO => return Some(Status::Litigio),
+                _ => {}
+            }
+
+            // Se não encontrou por ID, tentar inferir pelo nome do grupo (mais flexível)
+            let name_norm = Normalizer::normalize_text(&group.name).to_lowercase();
+            match name_norm.as_str() {
+                "ativo" => return Some(Status::Ativo),
+                "defeito" => return Some(Status::Defeito),
+                "disponivel" | "disponível" => return Some(Status::Disponivel),
+                "nomadico" | "nomádico" => return Some(Status::Nomadico),
+                "litigio" | "litígio" => return Some(Status::Litigio),
+                "manutencao" | "manutenção" => return Some(Status::Manutencao),
+                "triagem" => return Some(Status::Triagem),
+                "baixa" => return Some(Status::Baixa),
                 _ => continue,
             }
         }

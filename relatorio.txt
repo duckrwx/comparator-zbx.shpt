@@ -1,0 +1,99 @@
+================================================================================
+                           RELATÓRIO DE DISCREPÂNCIAS                           
+                              Zabbix vs SharePoint                              
+================================================================================
+
+📊 RESUMO
+----------------------------------------
+  ✅ Estações correspondentes: 248
+  ⚠️  Discrepâncias de status: 15
+  📡 Apenas no Zabbix: 2
+  📝 Apenas no SharePoint: 1
+
+
+⚠️  DISCREPÂNCIAS DE STATUS
+----------------------------------------
+
+  ID: [33m2325[0m
+  Nome: RFEye002325
+  Status Zabbix: [31mDefeito[0m | Status SharePoint: [34mAtivo[0m
+
+  ID: [33mmiaer-pe[0m
+  Nome: MIAer-PE
+  Status Zabbix: [31mDefeito[0m | Status SharePoint: [34mAtivo[0m
+
+  ID: [33m2305[0m
+  Nome: RFEye002305
+  Status Zabbix: [31mDisponível[0m | Status SharePoint: [34mBaixa[0m
+
+  ID: [33m2182[0m
+  Nome: RFEye002182
+  Status Zabbix: [31mDisponível[0m | Status SharePoint: [34mAtivo[0m
+
+  ID: [33m2315[0m
+  Nome: RFEye002315
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mNomádico[0m
+
+  ID: [33m2106[0m
+  Nome: RFEye002106
+  Status Zabbix: [31mTriagem[0m | Status SharePoint: [34mAtivo[0m
+  Regional Zabbix: UO061 | Regional SharePoint: GR06
+
+  ID: [33mumsgo01[0m
+  Nome: UMSGO01
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mDisponível[0m
+
+  ID: [33m2158[0m
+  Nome: RFEye002158
+  Status Zabbix: [31mDefeito[0m | Status SharePoint: [34mManutenção[0m
+  Regional Zabbix: UO061 | Regional SharePoint: GR06
+
+  ID: [33m2222[0m
+  Nome: RFEye002222
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mDisponível[0m
+
+  ID: [33m2094[0m
+  Nome: RFEye002094
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mDisponível[0m
+
+  ID: [33m211022[0m
+  Nome: CWSM211022
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mDisponível[0m
+
+  ID: [33m2215[0m
+  Nome: RFEye002215
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mDisponível[0m
+  Regional Zabbix: UO073 | Regional SharePoint: GR07
+
+  ID: [33m2093[0m
+  Nome: RFEye002093
+  Status Zabbix: [31mAtivo[0m | Status SharePoint: [34mNomádico[0m
+
+  ID: [33m2224[0m
+  Nome: RFEye002224
+  Status Zabbix: [31mDefeito[0m | Status SharePoint: [34mManutenção[0m
+
+  ID: [33m2264[0m
+  Nome: RFEye002264
+  Status Zabbix: [31mDesconhecido[0m | Status SharePoint: [34mAtivo[0m
+
+
+📡 APENAS NO ZABBIX
+----------------------------------------
+
+  • [36mERMxBA01[0m (10902)
+    Status: Disponível | Regional: GR08
+
+  • [36mERMxRN01[0m (10981)
+    Status: Disponível | Regional: UO091
+
+
+📝 APENAS NO SHAREPOINT
+----------------------------------------
+
+  • [32mrfeye002218[0m (rfeye002218)
+    Status: Defeito | Regional: GR04
+
+
+================================================================================
+Gerado em: 31/10/2025 17:48:41
